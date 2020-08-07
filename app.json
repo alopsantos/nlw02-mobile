@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "nlw02-mobile",
-    "slug": "nlw02-mobile",
+    "name": "Proffy",
+    "slug": "proffy",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,6 +21,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "android": {
+      "package": "lopscorp.proffy"
     }
   }
 }
