@@ -90,6 +90,7 @@ function TeacherList() {
       <ScrollView
         style={styles.teacherList}
         contentContainerStyle={{ paddingHorizontal: 8, paddingBottom: 16 }}
+        showsHorizontalScrollIndicator={false}
       >
         {teachers.map((teacher: Teacher) =>{
           return <TeacherItem key={teacher._id} teacher={teacher} />

@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Image, Text } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 
 import heartOutlinIcon from "../../assets/images/icons/heart-outline.png";
 import unfavoriteIcon from "../../assets/images/icons/unfavorite.png";
@@ -16,17 +17,19 @@ export interface Teacher {
   urllogo: string;
 }
 
-interface TeacherItemProps{
+interface TeacherItemProps {
   teacher: Teacher;
 }
-const TeacherItem: React.FC<TeacherItemProps> = ({teacher}) => {
+const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
+  const navigation = useNavigation();
+  function navigateToDetail(teacher: TeacherItemProps) {
+    navigation.navigate("Detail", { teacher });
+    console.log(teacher);
+  }
   return (
     <View style={styles.container}>
       <View style={styles.profile}>
-        <Image
-          style={styles.avatar}
-          source={{ uri: teacher.urllogo }}
-        />
+        <Image style={styles.avatar} source={{ uri: teacher.urllogo }} />
 
         <View style={styles.profileInfo}>
           <Text style={styles.name}>{teacher.name}</Text>
@@ -52,7 +55,10 @@ const TeacherItem: React.FC<TeacherItemProps> = ({teacher}) => {
             <Image source={unfavoriteIcon} />
           </RectButton>
 
-          <RectButton style={styles.contactButton}>
+          <RectButton
+            style={styles.contactButton}
+            onPress={() => navigateToDetail(teacher)}
+          >
             <Image source={whatsappIcon} />
             <Text style={styles.contactButtonText}>Entrar em contato</Text>
           </RectButton>
@@ -60,6 +66,6 @@ const TeacherItem: React.FC<TeacherItemProps> = ({teacher}) => {
       </View>
     </View>
   );
-}
+};
 
 export default TeacherItem;
