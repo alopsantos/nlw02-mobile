@@ -1,34 +1,44 @@
 import React from "react";
 import { View, Image, Text } from "react-native";
+import { RectButton } from "react-native-gesture-handler";
 
 import heartOutlinIcon from "../../assets/images/icons/heart-outline.png";
 import unfavoriteIcon from "../../assets/images/icons/unfavorite.png";
 import whatsappIcon from "../../assets/images/icons/whatsapp.png";
 
 import styles from "./styles";
-import { RectButton } from "react-native-gesture-handler";
+export interface Teacher {
+  _id: string;
+  address: object;
+  email: string;
+  name: string;
+  phone: string;
+  urllogo: string;
+}
 
-function TeacherItem() {
+interface TeacherItemProps{
+  teacher: Teacher;
+}
+const TeacherItem: React.FC<TeacherItemProps> = ({teacher}) => {
   return (
     <View style={styles.container}>
       <View style={styles.profile}>
         <Image
           style={styles.avatar}
-          source={{ uri: "https://github.com/alopsantos.png" }}
+          source={{ uri: teacher.urllogo }}
         />
 
         <View style={styles.profileInfo}>
-          <Text style={styles.name}>Anderson Lopes</Text>
-          <Text style={styles.subject}>Estação Store</Text>
+          <Text style={styles.name}>{teacher.name}</Text>
+          <Text style={styles.subject}>{teacher.address}</Text>
         </View>
       </View>
       <Text style={styles.bio}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta sapiente
-        vel blanditiis vero molestias,
+        {teacher.phone}
         {"\n"}
+        {teacher.address}
         {"\n"}
-        nulla neque aliquid a quo voluptas perspiciatis! Tenetur in nulla
-        doloribus iure magnam impedit quas totam!
+        {teacher.email}
       </Text>
 
       <View style={styles.footer}>
